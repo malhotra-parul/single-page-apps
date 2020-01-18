@@ -1,5 +1,6 @@
 import React from "react";
 import Titles from "./components/Titles";
+import "./App.css";
 import Forms from "./components/Forms";
 import Weather from "./components/Weather";
 import axios from "axios";
@@ -52,16 +53,30 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <Titles />
-                <Forms getW={this.getWeather}/>
-                <Weather temp={this.state.temperature} 
-                         humidity={this.state.humidity}
-                         city={this.state.city}
-                         country={this.state.country}
-                         desc={this.state.description}
-                         err={this.state.err}/>
+                <div className="wrapper">
+                    <div className="main">
+                        <div className="container">
+                            <div className="row">
+                                <div className=" title-container">
+                                    <Titles />
+                                </div>
+                                <div className="col-xs-7 form-container">
+                                <Forms getW={this.getWeather}/>
+                                <Weather temp={this.state.temperature} 
+                                        humidity={this.state.humidity}
+                                        city={this.state.city}
+                                        country={this.state.country}
+                                        desc={this.state.description}
+                                        err={this.state.err}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
+        
+                
     }
 }
 export default App;
