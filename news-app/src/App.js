@@ -16,7 +16,7 @@ class App extends React.Component{
     getArticles = async ()=>{
       try{
      
-      const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${API_KEY}`);
+      const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=in&category=technology&general&apiKey=${API_KEY}`);
       const data = res.data;
       console.log(data);
       if(data){
