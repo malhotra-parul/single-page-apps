@@ -1,0 +1,9 @@
+.AppWrapper {
+    margin: 0;
+    padding: 0;
+}
+.AppMain {
+    height: 580px;
+    margin: 0;
+    padding: .5rem 1.5rem;
+}

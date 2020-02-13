@@ -1,0 +1,15 @@
+.WeatherDetailsWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem;
+    animation: fadein 2s;
+}
+
+.WeatherIconWrapper{
+    align-self: center;
+}
+
+.WeatherDataWrapper{
+    align-self: flex-start;
+}
