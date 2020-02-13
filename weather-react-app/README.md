@@ -4,3 +4,4 @@
 3. Stateful component is created under Containers folder.
 
 ##### Check the app for testing purposes here : http://35.226.203.119/
+![Screenshot](demo.png)
