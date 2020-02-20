@@ -1,0 +1,26 @@
+.ButtonWrapper button{
+    font-size: 1.4rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    background: #E8A43C;
+    border: none;
+    letter-spacing: +0.5px;
+    padding: 0.5rem 0.5rem;
+    color: whitesmoke;
+}
+
+.ButtonWrapper button:hover{
+    cursor: pointer;    
+}
+
+.ButtonWrapper button:active, .ButtonWrapper button:focus{
+    color: black;
+    outline: none;
+}
+
+.FormButtonWrapper{
+
+position: absolute;
+top: 10rem;
+right:39%;
+}
