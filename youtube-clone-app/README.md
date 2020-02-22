@@ -1,5 +1,5 @@
 
-This project is all about building a Youtube Clone using pure ReactJs.
+### This project is all about building a Youtube Clone using pure ReactJs.
 
 Steps followed:
 1. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

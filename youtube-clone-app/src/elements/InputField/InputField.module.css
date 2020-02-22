@@ -1,0 +1,18 @@
+.InputFieldWrapper input{
+    /* display: block; */
+    /* margin-top: 0.5rem; */
+    padding: 0.25rem 0.5rem;
+    width:100%;
+    height: auto;
+    width: 500px;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    line-height: 100%;
+    border: 1px solid lightgray;
+    color: black;
+}
+
+.InputFieldWrapper input::placeholder{
+    line-height: normal;
+    opacity: 1;
+}
