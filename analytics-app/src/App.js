@@ -1,22 +1,15 @@
-import React from "react";
-import "./App.css";
+import NavBar from "./components/layouts/NavBar";
+import React, { Component } from "react";
 
-class App extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-
-        }
-    }
-
+class App extends Component{
     render(){
-        return (
-        <div className="App">
-            <h1>Hello world!</h1>
-        </div>
-        
-        )
+        return(
+            <div className="App">
+                    <NavBar />
+            </div>
+        );
     }
 }
 
 export default App;
+
