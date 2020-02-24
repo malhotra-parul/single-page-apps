@@ -1,4 +1,6 @@
 import NavBar from "./components/layouts/NavBar";
+import UserItem from "./components/users/UserItem";
+
 import React, { Component } from "react";
 
 class App extends Component{
@@ -6,6 +8,7 @@ class App extends Component{
         return(
             <div className="App">
                     <NavBar />
+                    <UserItem />
             </div>
         );
     }
