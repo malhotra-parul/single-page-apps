@@ -11,7 +11,8 @@ class Search extends React.Component{
 
     onSubmit = (e)=>{
         e.preventDefault();
-        console.log(this.state.text);
+        this.props.searchUsers(this.state.text);
+        this.setState({text: ""})
     }
     render(){
         return(
