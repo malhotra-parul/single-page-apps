@@ -3,6 +3,8 @@ import NavBar from "./components/layouts/NavBar";
 import axios from "axios";
 import Users from "./components/users/Users";
 import Search from "../src/components/users/Search";
+const client_id = process.env.REACT_APP_CLIENT_ID;
+const secret_key = process.env.REACT_APP_CLIENT_SECRET;
 
 class App extends Component{
     state = {
@@ -11,9 +13,6 @@ class App extends Component{
     };
 
     async componentDidMount(){
-       const client_id = process.env.REACT_APP_CLIENT_ID;
-       const secret_key = process.env.REACT_APP_CLIENT_SECRET;
-      
         this.setState({loading: true});
         const res = await axios
                             .get(`https://api.github.com/users?client_id=${client_id}&client_secret=${secret_key}`);
@@ -24,8 +23,15 @@ class App extends Component{
         });
     }
 
-    searchUsers = (term)=>{
-        console.log(term);
+    searchUsers = async (text)=>{
+        this.setState({loading: true});
+        const res = await axios
+            .get(`https://api.github.com/users?q=${text}&client_id=${client_id}&client_secret=${secret_key}`);
+        console.log(text, res.data);
+        this.setState({
+            loading: false,
+            users: res.data.items
+        });
     }
 
     render(){
