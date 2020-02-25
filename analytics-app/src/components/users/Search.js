@@ -4,6 +4,10 @@ class Search extends React.Component{
     state={
         text : ""
     }
+
+    onChange = (e)=>{
+        this.setState({text : e.target.value});
+    }
     render(){
         return(
             <div>
@@ -11,7 +15,8 @@ class Search extends React.Component{
                     <input type="text" 
                     name="text" 
                     placeholder="Search for users..." 
-                    value={this.state.text}/>
+                    value={this.state.text}
+                    onChange={this.onChange}/>
                     <input type="submit" value="Search" className="btn btn-dark btn-block"/>
                 </form>
             </div>
