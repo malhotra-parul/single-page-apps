@@ -1,22 +1,25 @@
+import React, { Component } from "react";
 import NavBar from "./components/layouts/NavBar";
 import axios from "axios";
 import Users from "./components/users/Users";
 
-import React, { Component } from "react";
-
 class App extends Component{
     state = {
         users : [],
-        laoding: false
+        loading: false
     };
 
     async componentDidMount(){
-        this.setState({laoding: true});
-        const res = await axios.get("https://api.github.com/users");
+       const client_id = process.env.REACT_APP_CLIENT_ID;
+       const secret_key = process.env.REACT_APP_CLIENT_SECRET;
+      
+        this.setState({loading: true});
+        const res = await axios
+                            .get(`https://api.github.com/users?client_id=${client_id}&client_secret=${secret_key}`);
 
         this.setState({
             users : res.data,
-            laoding: false
+            loading: false
         });
     }
 
@@ -26,7 +29,7 @@ class App extends Component{
                     <NavBar />
                     <div className="container">
                     <Users loading={this.state.loading} users={this.state.users}/>
-                    </div>
+                 </div>
             </div>
         );
     }
