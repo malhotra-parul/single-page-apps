@@ -6,12 +6,17 @@ class Search extends React.Component{
     }
 
     onChange = (e)=>{
-        this.setState({text : e.target.value});
+        this.setState({[e.target.name] : e.target.value});
+    }
+
+    onSubmit = (e)=>{
+        e.preventDefault();
+        console.log(this.state.text);
     }
     render(){
         return(
             <div>
-                <form className="form">
+                <form className="form" onSubmit={this.onSubmit}>
                     <input type="text" 
                     name="text" 
                     placeholder="Search for users..." 
