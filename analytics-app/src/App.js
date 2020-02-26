@@ -9,7 +9,8 @@ const secret_key = process.env.REACT_APP_CLIENT_SECRET;
 class App extends Component{
     state = {
         users : [],
-        loading: false
+        loading: false,
+        alert: null
     };
 
     async componentDidMount(){
@@ -31,18 +32,36 @@ class App extends Component{
         console.log(text, res.data);
         this.setState({
             loading: false,
-            users: res.data.items
+            users: res.data
+        });
+    }
+
+    clearUsers = ()=>{
+        this.setState({
+            users: [],
+            loading: false
+        });
+    }
+
+    setAlert = (msg, type)=>{
+        this.setState({
+            alert: {
+                msg: msg,
+                type: type
+            }
         });
     }
 
     render(){
+        
         return(
             <div className="App">
                     <NavBar />
                     <div className="container">
                     <Search searchUsers={this.searchUsers} 
                             clearUsers={this.clearUsers}
-                            showClear={this.state.users.length>1 ? true : false}/>
+                            showClear={this.state.users.length>1 ? true : false}
+                            setAlert={this.setAlert}/>
                     <Users loading={this.state.loading} users={this.state.users}/>
                  </div>
             </div>
