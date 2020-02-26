@@ -21,12 +21,13 @@ class App extends Component{
             users : res.data,
             loading: false
         });
+        console.log(res.data);
     }
 
     searchUsers = async (text)=>{
         this.setState({loading: true});
         const res = await axios
-            .get(`https://api.github.com/users?q=${text}&client_id=${client_id}&client_secret=${secret_key}`);
+            .get(`https://api.github.com/users/${text}?client_id=${client_id}&client_secret=${secret_key}`);
         console.log(text, res.data);
         this.setState({
             loading: false,
@@ -40,7 +41,8 @@ class App extends Component{
                     <NavBar />
                     <div className="container">
                     <Search searchUsers={this.searchUsers} 
-                            clearUsers={this.clearUsers}/>
+                            clearUsers={this.clearUsers}
+                            showClear={this.state.users.length>1 ? true : false}/>
                     <Users loading={this.state.loading} users={this.state.users}/>
                  </div>
             </div>

@@ -8,7 +8,8 @@ class Search extends React.Component{
 
     static propTypes = {
         searchUsers: PropTypes.func.isRequired,
-        clearUsers: PropTypes.func.isRequired
+        clearUsers: PropTypes.func.isRequired,
+        showClear: PropTypes.bool.isRequired
     };
 
     onChange = (e)=>{
@@ -34,8 +35,8 @@ class Search extends React.Component{
                            className="btn btn-dark btn-block"
                            onClick={this.props.searchUsers}/>
                 </form>
-                <button className="btn btn-light btn-block" 
-                        onClick={this.props.clearUsers}>Clear</button>
+                { this.props.showClear && (<button className="btn btn-light btn-block" 
+                onClick={this.props.clearUsers}>Clear</button>)}
             </div>
         )
     }
