@@ -4,6 +4,7 @@ import axios from "axios";
 import Users from "./components/users/Users";
 import Search from "../src/components/users/Search";
 import Alert from "../src/components/layouts/Alert";
+import './App.css';
 const client_id = process.env.REACT_APP_CLIENT_ID;
 const secret_key = process.env.REACT_APP_CLIENT_SECRET;
 
@@ -23,14 +24,14 @@ class App extends Component{
             users : res.data,
             loading: false
         });
-        console.log(res.data);
+       
     }
 
     searchUsers = async (text)=>{
         this.setState({loading: true});
         const res = await axios
             .get(`https://api.github.com/search/users?q=${text}&client_id=${client_id}&client_secret=${secret_key}`);
-        console.log(text, res.data  );
+   
         this.setState({
             loading: false,
             users: res.data.items   
@@ -51,7 +52,7 @@ class App extends Component{
                 type: type
             }
         });
-
+        
         setTimeout(()=>{this.setState({alert: null})}, 3000);
     }
 
