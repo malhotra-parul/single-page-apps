@@ -29,11 +29,11 @@ class App extends Component{
     searchUsers = async (text)=>{
         this.setState({loading: true});
         const res = await axios
-            .get(`https://api.github.com/users/${text}?client_id=${client_id}&client_secret=${secret_key}`);
+            .get(`https://api.github.com/search/users?q=${text}&client_id=${client_id}&client_secret=${secret_key}`);
         console.log(text, res.data  );
         this.setState({
             loading: false,
-            users: res.data
+            users: res.data.items   
         });
     }
 

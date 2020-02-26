@@ -8,16 +8,7 @@ const Users = ({users, loading})=>{
         if(loading){
             return <Spinners />;
         }else{
-            return(
-                <div style={userStyle}>
-                    {
-                        users.map(user => (
-    
-                        <UserItem key={user.id} user={user}/>
-                        ))
-                    }
-                </div>
-            );
+            return <div style={userStyle}>{users.map((user) => <UserItem key={user.id} user={user}/>)}</div>;
         }
 }
 
