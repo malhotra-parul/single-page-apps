@@ -22,6 +22,7 @@ class Search extends React.Component{
         this.setState({text: ""})
     }
     render(){
+        const {showClear, clearUsers} = this.props;
         return(
             <div>
                 <form className="form" onSubmit={this.onSubmit}>
@@ -33,10 +34,10 @@ class Search extends React.Component{
                     <input type="submit" 
                            value="Search" 
                            className="btn btn-dark btn-block"
-                           onClick={this.props.searchUsers}/>
+                           />
                 </form>
-                { this.props.showClear && (<button className="btn btn-light btn-block" 
-                onClick={this.props.clearUsers}>Clear</button>)}
+                { showClear && (<button className="btn btn-light btn-block" 
+                onClick={clearUsers}>Clear</button>)}
             </div>
         )
     }
