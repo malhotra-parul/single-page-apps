@@ -51,6 +51,8 @@ class App extends Component{
                 type: type
             }
         });
+
+        setTimeout(()=>{this.setState({alert: null})}, 3000);
     }
 
     render(){
