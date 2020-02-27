@@ -5,6 +5,7 @@ import axios from "axios";
 import Users from "./components/users/Users";
 import Search from "../src/components/users/Search";
 import Alert from "../src/components/layouts/Alert";
+import About from "./components/pages/About";
 import './App.css';
 const client_id = process.env.REACT_APP_CLIENT_ID;
 const secret_key = process.env.REACT_APP_CLIENT_SECRET;
@@ -67,7 +68,7 @@ class App extends Component{
                     <Alert alert={this.state.alert}/>
                     <Switch>
                     <Route
-                            path="/"
+                           exact path="/"
                             render={(props)=>(
                                 <Fragment>
                                 <Search searchUsers={this.searchUsers} 
@@ -78,6 +79,7 @@ class App extends Component{
                                 </Fragment>
                             )}
                                 />
+                            <Route exact path="/about" component={About}/>
                     </Switch>
                  </div>
             </div>
