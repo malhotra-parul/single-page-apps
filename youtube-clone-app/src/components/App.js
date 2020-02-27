@@ -1,15 +1,23 @@
 import React from "react";
 import SearchBar from "./SearchBar";
+import youtube from "../apis/youtube";
 
-const KEY = process.env.REACT_APP_API_KEY;
 
 class App extends React.Component{
+
+    onTermSubmit = (term)=>{
+        youtube.get("/search", {
+            params: {
+                q: term
+            }
+        });
+    };
     
     render(){
-        console.log(KEY);
+       
         return(
             <div>
-                <SearchBar />
+                <SearchBar onFormSubmit={this.onTermSubmit}/>
             </div>
         )
     }
