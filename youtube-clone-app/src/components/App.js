@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import youtube from "../apis/youtube";
 import VideoList from "../components/VideoList";
+import VideoDetail from "./VideoDetail";
 
 
 class App extends React.Component{
@@ -9,7 +10,9 @@ class App extends React.Component{
         videos:[],
         selectedVideo : null
     }
-
+    componentDidMount = ()=>{
+        this.onTermSubmit("Nodejs");
+    }
     onTermSubmit = async (term)=>{
         const response = await youtube.get("/search", {
             params: {
@@ -17,8 +20,9 @@ class App extends React.Component{
             }
         });
 
-        this.setState({
-            videos: response.data.items
+         await this.setState({
+            videos: response.data.items,
+            selectedVideo: response.data.items[0]
         });
     };
 
@@ -31,6 +35,7 @@ class App extends React.Component{
         return(
             <div>
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
+                <VideoDetail video={this.state.selectedVideo}/>
                 <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
             </div>
         )
