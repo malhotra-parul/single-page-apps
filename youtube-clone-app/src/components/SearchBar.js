@@ -1,7 +1,8 @@
 import React from "react";
-
+import TextField from '@material-ui/core/TextField';
 
 class SearchBar extends React.Component{
+
     state = {
         term : ""
     };
@@ -18,17 +19,15 @@ class SearchBar extends React.Component{
     }
 
     render(){
+        
         return(
             <div>
-                <form onSubmit={this.onFormSubmit}>
-                    <div>
-                        <label>Search</label>
-                        <input type="text"
-                               value = {this.state.term}
-                               onChange={this.onInputChange}/>
-                    </div>
-                </form>
-            </div>
+            <form  onSubmit={this.onFormSubmit} noValidate autoComplete="off">
+            <TextField id="outlined-basic" label="Search" size="small" 
+            variant="outlined" margin="normal" color="primary" value = {this.state.term}
+            onChange={this.onInputChange} style={{width: 700}}/>
+           </form>
+           </div>
         )
     }
 }
