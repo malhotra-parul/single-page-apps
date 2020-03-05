@@ -13,5 +13,5 @@ app.use(express.static("public"));
 //socket server side setup
 var io = socket(server); //A socket now sits on the server listening to any connections.
 io.on("connection", (socket)=>{
-    console.log("Made socket connection: " + socket);
+    console.log("Made socket connection: ", socket.id);
 });//io listens to an event - connection. Once connection is made, the callback is fired.
