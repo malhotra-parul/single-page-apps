@@ -9,7 +9,10 @@ app.get("/", (req, res)=>{
 
 io.on("connection", (socket)=>{
     console.log("A user connected!");
-})
+    socket.on("disconnect", ()=>{
+        console.log("USer disconnected");
+    });
+});
 
 http.listen(3000, ()=>{
     console.log("Listening on port 3000");
