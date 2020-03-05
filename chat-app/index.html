@@ -15,6 +15,10 @@
         #messages li { padding: 5px 10px; }
         #messages li:nth-child(odd) { background: #eee; }
       </style>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+          var socket = io();
+      </script>
 </head>
 <body>
     <ul id="messages"></ul>
