@@ -7,6 +7,13 @@ const server = http.createServer(app);
 const io = socketIo(server); //created an instance of socket io.
 const router = require("./router");
 
+io.on("connection", (socket)=>{
+    console.log("User connected!");
+    socket.on("disconnect", ()=>{
+        console.log("User Disconnected!");
+    })
+})
+
 app.use(router);//call router as a middleware
 
 server.listen(PORT, ()=>{
