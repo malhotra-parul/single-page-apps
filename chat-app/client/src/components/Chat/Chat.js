@@ -12,9 +12,16 @@ const Chat = ({location})=>{
         const { name, room } = queryString.parse(location.search); 
         //location is a prop sent from React router
         socket = io(ENDPOINT);
-        socket.emit("join", {name, room}, ()=>{});
+       
         setName(name);
         setRoom(room);
+
+        socket.emit("join", {name, room}, ()=>{});
+
+        return ()=>{
+            socket.emit("disconnect");
+            socket.off();
+        }
     }, [ENDPOINT, location.search])
 
     return(
