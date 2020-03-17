@@ -9,13 +9,19 @@ const router = require("./router");
 const {addUser, removeUser, getUser, getUsersInARoom} = require("./users");
 
 io.on("connection", (socket)=>{
-    console.log("User connected!");
+    
     socket.on("join", ({name, room}, callback)=>{
-        console.log(name, room);
-    })
+        const {error, user} = addUser({id: socket.id, name, room});
+        if(error) return callback(error);
+        socket.emit("message", {user: "admin", msg: `${user.name}, welcome to room ${user.room}!`});
+        socket.broadcast.to(user.room).emit("message", {user:"admin", msg: `${user.name} has joined the chat..`});
+
+        socket.join(user.room);
+       callback();
+    });
     socket.on("disconnect", ()=>{
         console.log("User Disconnected!");
-    })
+    });
 })
 
 app.use(router);//call router as a middleware
