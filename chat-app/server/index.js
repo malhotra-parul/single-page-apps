@@ -6,6 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server); //created an instance of socket io.
 const router = require("./router");
+const {addUser, removeUser, getUser, getUsersInARoom} = require("./users");
 
 io.on("connection", (socket)=>{
     console.log("User connected!");
