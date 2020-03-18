@@ -26,7 +26,10 @@ io.on("connection", (socket)=>{
         callback();
     })
     socket.on("disconnect", ()=>{
-        console.log("User Disconnected!");
+        const user = removeUser(socket.id);
+        if(user){
+            io.to(user.room).emit("message", {user: user.name, text: `${user.name} has left the chat.`})
+        }
     });
 })
 
