@@ -1,17 +1,14 @@
 import React from "react";
+import keywords from "./keywords";
 import AutoCompleteSearch from "./AutoCompleteSearch";
 
  const App = ()=>{
 
-    const items = ["Apple", "Banana", 
-    "Cucumber", "Donughts", "Eggs", "Fish", "Goat", 
-    "Goat Cheese", "Hamburger", "Ham", "Apes", "Boxes",
-    "Coats", "Cats", "Deers", "Fast food"];
-
   return (
     <div>
         Hello from App component!
-        <AutoCompleteSearch items={items}/>
+        <AutoCompleteSearch items={keywords}/>
+        
     </div>
   );  
 };
