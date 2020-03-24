@@ -4,41 +4,70 @@ class AutoCompleteSearch extends Component{
     state = {
         query : "",
         filteredSuggestions : [],
-        showSuggestions : false
+        showSuggestions : false,
+        activeOption : 0
     };
 
     onSubmit = (event)=>{
+        alert(`Search query submitted is : ${this.state.query}`);
         this.setState({
             query : "",
             filteredSuggestions : [],
-            showSuggestions: false
+            showSuggestions: false, 
+            activeOption : 0
         });
         event.preventDefault();
     };
 
     onChange = (event)=>{
-        const value = event.target.value;
+        const query = event.target.value;
         const { items } = this.props;
-        const regex = new RegExp(`^${value}`, "i");
+        const regex = new RegExp(`^${query}`, "i");
         
         const filteredSuggestions = items.sort().filter(element => regex.test(element));
         console.log(filteredSuggestions);
         this.setState({
-            query : value,
-            filteredSuggestions : filteredSuggestions
+            query,
+            filteredSuggestions,
+            showSuggestions: true
         });
     };
 
-    
+    onClick = (event)=>{
+        this.setState({
+            query: event.currentTarget.innerText,
+            filteredSuggestions: [],
+            showSuggestions: false,
+            activeOption: 0
+        });
+
+    };
+
+    onKeyPress = (event)=>{
+
+    };
 
     render(){
         const {
             onChange,
             onClick,
             onSubmit,
-            state : { query }
+            state : { query, filteredSuggestions, showSuggestions, activeOption }
         } = this;
         let suggestionsList;
+
+        (showSuggestions && query.length)
+        ? (
+            (filteredSuggestions.length) ? 
+                (
+                    suggestionsList = <ul>
+                        {filteredSuggestions.map(
+                            (suggestion , index)=> <li key={index} onClick={onClick}>{suggestion}</li>)}
+                    </ul>
+                ) :
+                (suggestionsList = <div>No suggestions found!</div>)
+        ): suggestionsList = null;
+
     return (
         <Fragment>
             <div>
