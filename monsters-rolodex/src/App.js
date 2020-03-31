@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardList from "./components/cardList/card-list";
+import SearchBox from "./components/search-box/searchBox";
 import axios from "axios";
 import './App.css';
 
@@ -25,9 +26,8 @@ class App extends Component {
                       monster.name.toLowerCase().includes(searchText.toLowerCase()));
   return (
     <div className="App">
-      <input type="search"
-             placeholder="search monsters"
-             onChange={(e)=> this.setState({searchText: e.target.value})}/>
+      <SearchBox placeholder="search monsters" 
+                 handleChange={(e)=> this.setState({searchText: e.target.value})} />
       <CardList monsters = {filteredMonsters}/>
     </div>
   );
